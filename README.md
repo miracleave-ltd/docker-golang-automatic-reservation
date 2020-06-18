@@ -1,16 +1,16 @@
 # ① Dockerfileをダウンロード
 <br>
 
-docker_go-master.zipを解凍し、docker_go-masterディレクトリをユーザー直下に配置します
+docker-golang-automatic-reservation-master.zipを解凍し、docker-golang-automatic-reservation-masterディレクトリをユーザー直下に配置します
 ![キャプチャ](https://user-images.githubusercontent.com/66953939/84660963-94fddc00-af54-11ea-90ff-e8fcc0af3e5f.png)
 
 <br>
 
 ![キャプチャ](https://user-images.githubusercontent.com/66953939/84664878-23289100-af5a-11ea-9818-8b3dd7beb8ca.png)
 <br><br>
-# ② コマンドプロントで解凍したdocker_go-masterまで移動
+# ② コマンドプロントで解凍したdocker-golang-automatic-reservation-masterまで移動
 ```
-cd C:\Users\docker_go-master
+cd C:\Users\docker-golang-automatic-reservation-master
 ```
 <br><br>
 # ③ ビルド実行
@@ -30,11 +30,11 @@ docker-compose up -d
 ```
 docker ps
 ```
-Creating docker_go-master_app_1 ... done <br>
-↑のように「docker_go-master_app_1」のコンテナがupしていればOK！
+Creating docker-golang-automatic-reservation-master_app_1 ... done <br>
+↑のように「docker-golang-automatic-reservation-master_app_1」のコンテナがupしていればOK！
 <br><br>
 
-# ⑤ \docker_go-master配下にmain.goファイルを作成
+# ⑤ \docker-golang-automatic-reservation-master配下にmain.goファイルを作成
 <br><br>
 
 # ⑥ main.goファイルを編集し、Hello Worldを出力させる
@@ -52,7 +52,7 @@ func main() {
 # ⑦ WEBのコンテナに接続します
 ④と同じ階層で実行する。
 ```
-docker exec -it docker_go-master_app_1 bash
+docker exec -it docker-golang-automatic-reservation-master_app_1 bash
 ```
 
 <br><br>
@@ -64,7 +64,7 @@ go run main.go
 ![キャプチャ](https://user-images.githubusercontent.com/66953939/84671123-f11b2d00-af61-11ea-8f95-3050b48159de.png)
 <br><br>
 # ⑨ main.goファイルを編集し、googleのtopページのスクリーンショットを撮る
-※/docker_go-master配下にscreenshotフォルダを作成しておく。<br>
+※/docker-golang-automatic-reservation-master配下にscreenshotフォルダを作成しておく。<br>
 ![キャプチャ](https://user-images.githubusercontent.com/66953939/84674597-1dd14380-af66-11ea-8147-bc97fa0dc019.png)
 <br>
 ```
@@ -118,7 +118,7 @@ go run main.go
 <br><br>
 
 # ⑪ スクリーンショットの確認
-/docker_go-master配下に作成したscreenshotフォルダにGoogle.pngが作成されていることを確認<br>
+/docker-golang-automatic-reservation-master配下に作成したscreenshotフォルダにGoogle.pngが作成されていることを確認<br>
 ![キャプチャ](https://user-images.githubusercontent.com/66953939/84678989-b1594300-af6b-11ea-808f-6f32a12a66fa.png)
 <br><br>
 
