@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>1. はじめに</title>
+        <title>ex. プログラム全量</title>
                 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html" class="active"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Dockerの準備</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Goのプログラム作成</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> ANAのページで予約を自動化していく</a></li><li class="chapter-item expanded "><a href="code.html"><strong aria-hidden="true">5.</strong> ex. プログラム全量</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Dockerの準備</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Goのプログラム作成</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> ANAのページで予約を自動化していく</a></li><li class="chapter-item expanded "><a href="code.html" class="active"><strong aria-hidden="true">5.</strong> ex. プログラム全量</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -144,22 +144,104 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="1-はじめに"><a class="header" href="#1-はじめに">1. はじめに</a></h1>
-<!-- toc -->
-<h2 id="11-今回行うこと"><a class="header" href="#11-今回行うこと">1.1. 今回行うこと</a></h2>
-<ul>
-<li><code>Docker</code>、<code>go</code>、<code>agouti</code>を使用し、ANAの飛行機を予約する。<br />
-※実際には予約完了までは行わず手前で完了とします</li>
-</ul>
+                        <h1 id="ex-プログラム全量"><a class="header" href="#ex-プログラム全量">ex. プログラム全量</a></h1>
+<pre><code class="language-go">package main
+
+import (
+	&quot;github.com/sclevine/agouti&quot;
+	&quot;log&quot;
+)
+
+func main() {
+    // Chromeを利用することを宣言
+    driver := agouti.ChromeDriver(
+        agouti.ChromeOptions(&quot;args&quot;, []string{
+            &quot;--headless&quot;,
+            &quot;--disable-gpu&quot;,
+            &quot;--window-size=1280,1024&quot;,
+            &quot;--disable-dev-shm-usage&quot;,
+            &quot;--no-sandbox&quot;,
+        }),
+        agouti.Debug,
+    )
+
+    if err := driver.Start(); err != nil {
+        log.Printf(&quot;Failed to start driver: %v&quot;, err)
+    }
+    defer driver.Stop()
+
+    page, err := driver.NewPage(agouti.Browser(&quot;chrome&quot;))
+    if err != nil {
+        log.Printf(&quot;Failed to open page: %v&quot;, err)
+    }
+
+    // Access to a target page
+    url := &quot;https://www.google.co.jp/&quot;
+    err = page.Navigate(url)
+    if err != nil {
+        log.Printf(&quot;Failed to navigate: %v&quot;, err)
+    }
+    // Get screen shot
+    page.Screenshot(&quot;screenshot/Google.png&quot;)
+
+    // 自動操作
+    //ANA日本語ページ遷移
+    page.Navigate(&quot;https://www.ana.co.jp/ja/jp&quot;)
+    log.Printf(page.Title())
+    page.Screenshot(&quot;screenshot/ana-top.png&quot;)
+    //検索ボタン押下
+    page.FirstByName(&quot;arrivalAirport&quot;).Submit()
+    page.Screenshot(&quot;screenshot/ana-1.png&quot;)
+    //区間検索「片道」押下
+    page.FindByID(&quot;buttonOneWay&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-2.png&quot;)
+    //到着地「札幌」選択
+    page.FindByID(&quot;arrivalAirport&quot;).Select(&quot;札幌(千歳)&quot;)
+    page.Screenshot(&quot;screenshot/ana-3.png&quot;)
+    //カレンダーテキスト押下
+    page.FindByID(&quot;outwardEmbarkationDate&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-4.png&quot;)
+    //搭乗日カレンダーで8月10日を指定
+    page.FirstByXPath(&quot;/html/body/div[9]/div/div/div/div/div[3]/table/tbody/tr[3]/td[2]/a&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-5.png&quot;)
+    //最安値指定
+    page.FirstByLabel(&quot;最安運賃を検索&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-6.png&quot;)
+    //検索ボタン押下
+    page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[2]/div[4]/p/input&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-7.png&quot;)
+    //値段を押下
+    page.FirstByLabel(&quot;18,860円&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-8.png&quot;)
+    //確認ボタン押下
+    page.FirstByName(&quot;j_idt331&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-9.png&quot;)
+    //一般の方押下
+    page.FirstByName(&quot;j_idt318&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-10.png&quot;)
+
+    //お客様情報入力
+    page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input&quot;).Fill(&quot;ソラノ&quot;)
+    page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input&quot;).Fill(&quot;タロウ&quot;)
+    page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input&quot;).Fill(&quot;25&quot;)
+    page.FirstByLabel(&quot;男性&quot;).Click()
+    page.FirstByName(&quot;telNo&quot;).Fill(&quot;123-456-7890&quot;)
+    page.FirstByName(&quot;assistMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
+    page.FirstByName(&quot;assistConfirmMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
+    page.Screenshot(&quot;screenshot/ana-11.png&quot;)
+    //  page.FindByID(&quot;m_ticket02&quot;).Click()
+    // log.Printf(page.Title())
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
-                                                    <a rel="next" href="chapter_2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                                    <a rel="prev" href="chapter_4.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+                        
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -167,10 +249,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                                    <a rel="next" href="chapter_2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                                    <a rel="prev" href="chapter_4.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+                
                             </nav>
 
         </div>
