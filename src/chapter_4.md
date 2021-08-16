@@ -56,10 +56,10 @@ page.Screenshot("screenshot/ana-7.png")
 page.FirstByLabel("hoge3").Click()
 page.Screenshot("screenshot/ana-8.png")
 //確認ボタン押下
-page.FirstByName("j_idt331").Click()
+page.FindByButton("確認画面へ").Click()
 page.Screenshot("screenshot/ana-9.png")
 //一般の方押下
-page.FirstByName("j_idt318").Click()
+page.FindByButton("一般の方").Click()
 page.Screenshot("screenshot/ana-10.png")
 ```
 
@@ -86,16 +86,16 @@ page.FirstByXPath("/html/body/div[9]/div/div/div/div/div[3]/table/tbody/tr[3]/td
 ```go
 page.FirstByLabel("hoge3").Click()
 // ↓ 取得したラベルを設定
-page.FirstByLabel("18,860円").Click()
+page.FirstByLabel("23,960円").Click()
 ```
 
 `hoge3`を書き換えたら以下を追加します。
 
 ```go
 //お客様情報入力
-page.FirstByXPath("/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input").Fill("ソラノ")
-page.FirstByXPath("/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input").Fill("タロウ")
-page.FirstByXPath("/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input").Fill("25")
+page.FirstByXPath("/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input").Fill("ソラノ")
+page.FirstByXPath("/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input").Fill("タロウ")
+page.FirstByXPath("/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input").Fill("25")
 page.FirstByLabel("男性").Click()
 page.FirstByName("hoge4").Fill()
 page.FirstByName("assistMailAddress").Fill("test@test.test.test")
