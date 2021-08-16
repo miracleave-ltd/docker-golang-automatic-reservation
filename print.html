@@ -297,10 +297,10 @@ page.Screenshot(&quot;screenshot/ana-7.png&quot;)
 page.FirstByLabel(&quot;hoge3&quot;).Click()
 page.Screenshot(&quot;screenshot/ana-8.png&quot;)
 //確認ボタン押下
-page.FirstByName(&quot;j_idt331&quot;).Click()
+page.FindByButton(&quot;確認画面へ&quot;).Click()
 page.Screenshot(&quot;screenshot/ana-9.png&quot;)
 //一般の方押下
-page.FirstByName(&quot;j_idt318&quot;).Click()
+page.FindByButton(&quot;一般の方&quot;).Click()
 page.Screenshot(&quot;screenshot/ana-10.png&quot;)
 </code></pre>
 <h2 id="43-firstbyxpathのhoge2を書き換える"><a class="header" href="#43-firstbyxpathのhoge2を書き換える">4.3. FirstByXPathのhoge2を書き換える</a></h2>
@@ -317,13 +317,13 @@ page.FirstByXPath(&quot;/html/body/div[9]/div/div/div/div/div[3]/table/tbody/tr[
 <p>下記の通り、<code>hoge3</code>部分を書き換えます。</p>
 <pre><code class="language-go">page.FirstByLabel(&quot;hoge3&quot;).Click()
 // ↓ 取得したラベルを設定
-page.FirstByLabel(&quot;18,860円&quot;).Click()
+page.FirstByLabel(&quot;23,960円&quot;).Click()
 </code></pre>
 <p><code>hoge3</code>を書き換えたら以下を追加します。</p>
 <pre><code class="language-go">//お客様情報入力
-page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input&quot;).Fill(&quot;ソラノ&quot;)
-page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input&quot;).Fill(&quot;タロウ&quot;)
-page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input&quot;).Fill(&quot;25&quot;)
+page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input&quot;).Fill(&quot;ソラノ&quot;)
+page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input&quot;).Fill(&quot;タロウ&quot;)
+page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input&quot;).Fill(&quot;25&quot;)
 page.FirstByLabel(&quot;男性&quot;).Click()
 page.FirstByName(&quot;hoge4&quot;).Fill()
 page.FirstByName(&quot;assistMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
@@ -349,8 +349,8 @@ page.FirstByName(&quot;telNo&quot;).Fill(&quot;123-456-7890&quot;)
 <pre><code class="language-go">package main
 
 import (
-	&quot;github.com/sclevine/agouti&quot;
-	&quot;log&quot;
+    &quot;github.com/sclevine/agouti&quot;
+    &quot;log&quot;
 )
 
 func main() {
@@ -402,29 +402,29 @@ func main() {
     //カレンダーテキスト押下
     page.FindByID(&quot;outwardEmbarkationDate&quot;).Click()
     page.Screenshot(&quot;screenshot/ana-4.png&quot;)
-    //搭乗日カレンダーで8月10日を指定
-    page.FirstByXPath(&quot;/html/body/div[9]/div/div/div/div/div[3]/table/tbody/tr[3]/td[2]/a&quot;).Click()
+    //搭乗日カレンダーを指定
+    page.FirstByXPath(&quot;/html/body/div[8]/div/div/div/div/div[1]/table/tbody/tr[5]/td[3]/a&quot;).Click()
     page.Screenshot(&quot;screenshot/ana-5.png&quot;)
     //最安値指定
     page.FirstByLabel(&quot;最安運賃を検索&quot;).Click()
     page.Screenshot(&quot;screenshot/ana-6.png&quot;)
     //検索ボタン押下
-    page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[2]/div[4]/p/input&quot;).Click()
+    page.FindByButton(&quot;検索する&quot;).Click()
     page.Screenshot(&quot;screenshot/ana-7.png&quot;)
     //値段を押下
-    page.FirstByLabel(&quot;18,860円&quot;).Click()
+    page.FirstByLabel(&quot;23,960円&quot;).Click()
     page.Screenshot(&quot;screenshot/ana-8.png&quot;)
     //確認ボタン押下
-    page.FirstByName(&quot;j_idt331&quot;).Click()
+    page.FindByButton(&quot;確認画面へ&quot;).Click()
     page.Screenshot(&quot;screenshot/ana-9.png&quot;)
     //一般の方押下
-    page.FirstByName(&quot;j_idt318&quot;).Click()
+    page.FindByButton(&quot;一般の方&quot;).Click()
     page.Screenshot(&quot;screenshot/ana-10.png&quot;)
 
     //お客様情報入力
-    page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input&quot;).Fill(&quot;ソラノ&quot;)
-    page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input&quot;).Fill(&quot;タロウ&quot;)
-    page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input&quot;).Fill(&quot;25&quot;)
+    page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input&quot;).Fill(&quot;ソラノ&quot;)
+    page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input&quot;).Fill(&quot;タロウ&quot;)
+    page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input&quot;).Fill(&quot;25&quot;)
     page.FirstByLabel(&quot;男性&quot;).Click()
     page.FirstByName(&quot;telNo&quot;).Fill(&quot;123-456-7890&quot;)
     page.FirstByName(&quot;assistMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
