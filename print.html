@@ -1,0 +1,481 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="sidebar-visible no-js navy">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+                <meta name="robots" content="noindex" />
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="theme/custom.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Dockerの準備</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Goのプログラム作成</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> ANAのページで予約を自動化していく</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="1-はじめに"><a class="header" href="#1-はじめに">1. はじめに</a></h1>
+<!-- toc -->
+<h2 id="11-今回行うこと"><a class="header" href="#11-今回行うこと">1.1. 今回行うこと</a></h2>
+<ul>
+<li><code>Docker</code>、<code>go</code>、<code>agouti</code>を使用し、ANAの飛行機を予約する。<br />
+※実際には予約完了までは行わず手前で完了とします</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="2-dockerの準備"><a class="header" href="#2-dockerの準備">2. Dockerの準備</a></h1>
+<!-- toc -->
+<h2 id="21-プログラムをダウンロード"><a class="header" href="#21-プログラムをダウンロード">2.1. プログラムをダウンロード</a></h2>
+<p>下図のとおり、GitHubから<code>docker-golang-automatic-reservation-master.zip</code>をダウンロードします。
+ダウンロードしたらユーザー直下に解答し、配置します</p>
+<p><img src="https://user-images.githubusercontent.com/66953939/84660963-94fddc00-af54-11ea-90ff-e8fcc0af3e5f.png" alt="キャプチャ" /></p>
+<p><img src="https://user-images.githubusercontent.com/66953939/84664878-23289100-af5a-11ea-9818-8b3dd7beb8ca.png" alt="キャプチャ" /></p>
+<h2 id="22-dockerイメージのビルド"><a class="header" href="#22-dockerイメージのビルド">2.2. Dockerイメージのビルド</a></h2>
+<p>コマンドプロンプトで解凍した<code>docker-golang-automatic-reservation-master</code>まで移動します。</p>
+<pre><code class="language-sh">cd C:\Users\docker-golang-automatic-reservation-master
+</code></pre>
+<p>移動したら以下を実行します。</p>
+<pre><code class="language-sh">docker-compose build
+#「Successfully built ●●●●●●●●●」が出たら完了！
+</code></pre>
+<h2 id="23-コンテナの起動"><a class="header" href="#23-コンテナの起動">2.3. コンテナの起動</a></h2>
+<p>ディレクトリはそのままで以下コマンドを実行します。</p>
+<pre><code class="language-sh">docker-compose up -d
+</code></pre>
+<p>更に以下のコマンドを実行しコンテナが正常に起動しているか確認します。</p>
+<pre><code class="language-sh">docker ps
+# Creating docker-golang-automatic-reservation-master_app_1 ... done
+# ↑のように「docker-golang-automatic-reservation-master_app_1」のコンテナがupしていればOK！
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="3-goのプログラム作成"><a class="header" href="#3-goのプログラム作成">3. Goのプログラム作成</a></h1>
+<!-- toc -->
+<h2 id="33-maingoファイルの作成"><a class="header" href="#33-maingoファイルの作成">3.3. main.goファイルの作成</a></h2>
+<p><code>docker-golang-automatic-reservation-master</code>配下に<code>main.go</code>ファイルを作成します。
+作成した<code>main.go</code>ファイルを編集し、Hello Worldを出力させます。</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+  fmt.Printf(&quot;Hello World\n&quot;)
+}
+</code></pre>
+<h2 id="32-コンテナに接続しgoを実行"><a class="header" href="#32-コンテナに接続しgoを実行">3.2. コンテナに接続し、Goを実行</a></h2>
+<pre><code class="language-bash"># コンテナの中に入る
+docker exec -it docker-golang-automatic-reservation-master_app_1 bash
+# main.goの実行
+go run main.go
+</code></pre>
+<p>下図のように「Hello World」が出力されていれば成功。
+<img src="https://user-images.githubusercontent.com/66953939/84671123-f11b2d00-af61-11ea-8f95-3050b48159de.png" alt="キャプチャ" /></p>
+<h2 id="33-google-chromeを起動しスクリーンショットを撮る"><a class="header" href="#33-google-chromeを起動しスクリーンショットを撮る">3.3. Google Chromeを起動し、スクリーンショットを撮る</a></h2>
+<p><code>/docker-golang-automatic-reservation-master</code>配下に<code>screenshot</code>フォルダを作成します。</p>
+<p><img src="https://user-images.githubusercontent.com/66953939/84674597-1dd14380-af66-11ea-8147-bc97fa0dc019.png" alt="キャプチャ" /></p>
+<p>以下のとおり、<code>main.go</code>ファイルの編集を行います。</p>
+<pre><code class="language-go">// main.go
+package main
+
+import (
+	&quot;github.com/sclevine/agouti&quot;
+	&quot;log&quot;
+)
+
+func main() {
+	// Chromeを利用することを宣言
+	driver := agouti.ChromeDriver(
+		agouti.ChromeOptions(&quot;args&quot;, []string{
+			&quot;--headless&quot;,
+			&quot;--disable-gpu&quot;,
+			&quot;--window-size=1280,1024&quot;,
+			&quot;--disable-dev-shm-usage&quot;,
+			&quot;--no-sandbox&quot;,
+		}),
+		agouti.Debug,
+	)
+
+	if err := driver.Start(); err != nil {
+		log.Printf(&quot;Failed to start driver: %v&quot;, err)
+	}
+	defer driver.Stop()
+
+	page, err := driver.NewPage(agouti.Browser(&quot;chrome&quot;))
+	if err != nil {
+		log.Printf(&quot;Failed to open page: %v&quot;, err)
+	}
+
+	// Access to a target page
+	url := &quot;https://www.google.co.jp/&quot;
+	err = page.Navigate(url)
+	if err != nil {
+		log.Printf(&quot;Failed to navigate: %v&quot;, err)
+	}
+	// Get screen shot
+	page.Screenshot(&quot;screenshot/Google.png&quot;)
+}
+</code></pre>
+<h2 id="34-再度コンテナに接続しgoを実行"><a class="header" href="#34-再度コンテナに接続しgoを実行">3.4. 再度コンテナに接続し、Goを実行</a></h2>
+<pre><code>go run main.go
+</code></pre>
+<p>下記のようなエラーが発生した場合は<code>main.go</code>ファイルの文字コードをUTF-8に変更してください。</p>
+<p><code>./main.go:9:11: invalid UTF-8 encoding</code></p>
+<h2 id="35-実行結果の確認"><a class="header" href="#35-実行結果の確認">3.5. 実行結果の確認</a></h2>
+<p>スクリーンショットが作成されているか確認します。
+<code>/docker-golang-automatic-reservation-master</code>配下に作成した<code>screenshot</code>フォルダに<code>Google.png</code>が作成されていればOKです。</p>
+<p><img src="https://user-images.githubusercontent.com/66953939/84678989-b1594300-af6b-11ea-808f-6f32a12a66fa.png" alt="キャプチャ" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="4-anaのページで予約を自動化していく"><a class="header" href="#4-anaのページで予約を自動化していく">4. ANAのページで予約を自動化していく</a></h1>
+<h2 id="⑫-maingoファイルを編集しanaのページで予約を自動化していく1"><a class="header" href="#⑫-maingoファイルを編集しanaのページで予約を自動化していく1">⑫ main.goファイルを編集し、ANAのページで予約を自動化していく・・・1</a></h2>
+<p>⑨で編集した「page.Screenshot(”screenshot/Google.png”)」に続けてコードを記載する。<br></p>
+<pre><code>	// 自動操作
+	//ANA日本語ページ遷移
+	page.Navigate(&quot;https://www.ana.co.jp/ja/jp&quot;)
+	log.Printf(page.Title())
+        page.Screenshot(&quot;screenshot/ana-top.png&quot;)
+	//検索ボタン押下
+	page.FirstByName(&quot;arrivalAirport&quot;).Submit()
+	page.Screenshot(&quot;screenshot/ana-1.png&quot;)
+	//区間検索「片道」押下
+	page.FindByID(&quot;hoge1&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-2.png&quot;)
+</code></pre>
+<p><br><br></p>
+<h2 id="⑬-ブラウザでanaの区間検索ページで要素を検索して片道のidを取得しhoge1を書き換える"><a class="header" href="#⑬-ブラウザでanaの区間検索ページで要素を検索して片道のidを取得しhoge1を書き換える">⑬ ブラウザでANAの区間検索ページで要素を検索して、片道のIDを取得し”hoge1”を書き換える</a></h2>
+<p>URL:https://www.ana.co.jp/ja/jp <br>
+上記URLで検索ボタンを押下すると、区間ページへ遷移できる。
+<br><br></p>
+<p><img src="https://user-images.githubusercontent.com/66953939/84682510-b240a380-af70-11ea-9aaa-381d7f67df82.png" alt="キャプチャ" /></p>
+<pre><code>page.FindByID(&quot;hoge1&quot;).Click()
+↓
+page.FindByID(&quot;buttonOneWay&quot;).Click()
+</code></pre>
+<p><br><br></p>
+<h1 id="⑭-maingoファイルを編集しanaのページで予約を自動化していく2"><a class="header" href="#⑭-maingoファイルを編集しanaのページで予約を自動化していく2">⑭ main.goファイルを編集し、ANAのページで予約を自動化していく・・・2</a></h1>
+<p>⑫で編集した「page.Screenshot(”screenshot/ana-2.png”)」に続けてコードを記載する。<br></p>
+<pre><code>	//到着地「札幌」選択
+	page.FindByID(&quot;arrivalAirport&quot;).Select(&quot;札幌(千歳)&quot;)
+	page.Screenshot(&quot;screenshot/ana-3.png&quot;)
+	//カレンダーテキスト押下
+	page.FindByID(&quot;outwardEmbarkationDate&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-4.png&quot;)
+	//カレンダーでXpathを指定して8月10日を指定
+	page.FirstByXPath(&quot;hoge2&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-5.png&quot;)
+	//最安値指定
+	page.FirstByLabel(&quot;最安運賃を検索&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-6.png&quot;)
+	//検索ボタン押下
+	page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[2]/div[4]/p/input&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-7.png&quot;)
+	//値段を押下
+	page.FirstByLabel(&quot;hoge3&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-8.png&quot;)
+	//確認ボタン押下
+	page.FirstByName(&quot;j_idt331&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-9.png&quot;)
+	//一般の方押下
+	page.FirstByName(&quot;j_idt318&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-10.png&quot;)
+</code></pre>
+<h1 id="⑮-要素を検索して搭乗日810のxpathと値段のラベルを取得しhoge2とhoge3を書き換える"><a class="header" href="#⑮-要素を検索して搭乗日810のxpathと値段のラベルを取得しhoge2とhoge3を書き換える">⑮ 要素を検索して、搭乗日8/10のXpathと値段のラベルを取得し”hoge2”と”hoge3”を書き換える</a></h1>
+<p>Xpathの要素検索<br>
+下記図の①→②→③の順番で取得する。<br>
+<img src="https://user-images.githubusercontent.com/66953939/84685535-6f34ff00-af75-11ea-8d6e-4ff2b8d3893e.png" alt="キャプチャ" />
+<br></p>
+<pre><code>page.FirstByXPath(&quot;hoge2&quot;).Click()
+↓
+page.FirstByXPath(&quot;/html/body/div[9]/div/div/div/div/div[3]/table/tbody/tr[3]/td[2]/a&quot;).Click()
+</code></pre>
+<br>
+ラベルの検索  
+<p><img src="https://user-images.githubusercontent.com/66953939/84686408-d8694200-af76-11ea-8e3b-551d611ba86d.png" alt="a" />
+<br></p>
+<pre><code>page.FirstByLabel(&quot;hoge3&quot;).Click()
+↓
+page.FirstByLabel(&quot;18,860円&quot;).Click()
+</code></pre>
+<p><br><br></p>
+<h2 id="⑯-maingoファイルを編集しanaのページで予約を自動化していく3"><a class="header" href="#⑯-maingoファイルを編集しanaのページで予約を自動化していく3">⑯ main.goファイルを編集し、ANAのページで予約を自動化していく・・・3</a></h2>
+<p>⑭で編集した「page.Screenshot(”screenshot/ana-10.png”)」に続けてコードを記載する。<br></p>
+<pre><code>	//お客様情報入力
+	page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input&quot;).Fill(&quot;ソラノ&quot;)
+	page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input&quot;).Fill(&quot;タロウ&quot;)
+	page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input&quot;).Fill(&quot;25&quot;)
+	page.FirstByLabel(&quot;男性&quot;).Click()
+	page.FirstByName(&quot;hoge4&quot;).Fill()
+	page.FirstByName(&quot;assistMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
+	page.FirstByName(&quot;assistConfirmMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
+	page.Screenshot(&quot;screenshot/ana-11.png&quot;)
+</code></pre>
+<h2 id="⑰-要素を検索して電話番号のname属性を取得しhoge4を書き換えfill内に電話番号を記載する"><a class="header" href="#⑰-要素を検索して電話番号のname属性を取得しhoge4を書き換えfill内に電話番号を記載する">⑰ 要素を検索して、電話番号のName属性を取得し”hoge4”を書き換え、Fill()内に電話番号を記載する。</a></h2>
+<pre><code>page.FirstByName(&quot;hoge4&quot;).Fill()
+↓
+page.FirstByName(&quot;telNo&quot;).Fill(&quot;123-456-7890&quot;)
+</code></pre>
+<p><br><br></p>
+<h1 id="⑱-⑰の作業まで完了後再度コンテナ内でgoファイルを実行する"><a class="header" href="#⑱-⑰の作業まで完了後再度コンテナ内でgoファイルを実行する">⑱ ⑰の作業まで完了後再度コンテナ内でgoファイルを実行する。</a></h1>
+<pre><code>go run main.go
+</code></pre>
+<p><br><br></p>
+<h1 id="⑲-screenshotフォルダ内にana-11pngまでのキャプチャが撮れていることを確認する"><a class="header" href="#⑲-screenshotフォルダ内にana-11pngまでのキャプチャが撮れていることを確認する">⑲ screenshotフォルダ内にana-11.pngまでのキャプチャが撮れていることを確認する。</a></h1>
+<p><br><br></p>
+<h1 id="⑳-完成コード全量"><a class="header" href="#⑳-完成コード全量">⑳ 完成コード全量</a></h1>
+<pre><code>package main
+
+import (
+	&quot;github.com/sclevine/agouti&quot;
+	&quot;log&quot;
+)
+
+func main() {
+	// Chromeを利用することを宣言
+	driver := agouti.ChromeDriver(
+		agouti.ChromeOptions(&quot;args&quot;, []string{
+			&quot;--headless&quot;,
+			&quot;--disable-gpu&quot;,
+			&quot;--window-size=1280,1024&quot;,
+			&quot;--disable-dev-shm-usage&quot;,
+			&quot;--no-sandbox&quot;,
+		}),
+		agouti.Debug,
+	)
+
+	if err := driver.Start(); err != nil {
+		log.Printf(&quot;Failed to start driver: %v&quot;, err)
+	}
+	defer driver.Stop()
+
+	page, err := driver.NewPage(agouti.Browser(&quot;chrome&quot;))
+	if err != nil {
+		log.Printf(&quot;Failed to open page: %v&quot;, err)
+	}
+
+	// Access to a target page
+	url := &quot;https://www.google.co.jp/&quot;
+	err = page.Navigate(url)
+	if err != nil {
+		log.Printf(&quot;Failed to navigate: %v&quot;, err)
+	}
+	// Get screen shot
+	page.Screenshot(&quot;screenshot/Google.png&quot;)
+
+	// 自動操作
+	//ANA日本語ページ遷移
+	page.Navigate(&quot;https://www.ana.co.jp/ja/jp&quot;)
+	log.Printf(page.Title())
+	page.Screenshot(&quot;screenshot/ana-top.png&quot;)
+	//検索ボタン押下
+	page.FirstByName(&quot;arrivalAirport&quot;).Submit()
+	page.Screenshot(&quot;screenshot/ana-1.png&quot;)
+	//区間検索「片道」押下
+	page.FindByID(&quot;buttonOneWay&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-2.png&quot;)
+	//到着地「札幌」選択
+	page.FindByID(&quot;arrivalAirport&quot;).Select(&quot;札幌(千歳)&quot;)
+	page.Screenshot(&quot;screenshot/ana-3.png&quot;)
+	//カレンダーテキスト押下
+	page.FindByID(&quot;outwardEmbarkationDate&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-4.png&quot;)
+	//搭乗日カレンダーで8月10日を指定
+	page.FirstByXPath(&quot;/html/body/div[9]/div/div/div/div/div[3]/table/tbody/tr[3]/td[2]/a&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-5.png&quot;)
+	//最安値指定
+	page.FirstByLabel(&quot;最安運賃を検索&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-6.png&quot;)
+	//検索ボタン押下
+	page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[2]/div[4]/p/input&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-7.png&quot;)
+	//値段を押下
+	page.FirstByLabel(&quot;18,860円&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-8.png&quot;)
+	//確認ボタン押下
+	page.FirstByName(&quot;j_idt331&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-9.png&quot;)
+	//一般の方押下
+	page.FirstByName(&quot;j_idt318&quot;).Click()
+	page.Screenshot(&quot;screenshot/ana-10.png&quot;)
+
+	//お客様情報入力
+	page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input&quot;).Fill(&quot;ソラノ&quot;)
+	page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input&quot;).Fill(&quot;タロウ&quot;)
+	page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input&quot;).Fill(&quot;25&quot;)
+	page.FirstByLabel(&quot;男性&quot;).Click()
+	page.FirstByName(&quot;telNo&quot;).Fill(&quot;123-456-7890&quot;)
+	page.FirstByName(&quot;assistMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
+	page.FirstByName(&quot;assistConfirmMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
+	page.Screenshot(&quot;screenshot/ana-11.png&quot;)
+	//  page.FindByID(&quot;m_ticket02&quot;).Click()
+	// log.Printf(page.Title())
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+                        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+                
+    </body>
+</html>
