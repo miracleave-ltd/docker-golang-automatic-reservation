@@ -10,9 +10,10 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
     apt-get install -y google-chrome-stable
  
 #install ChromeDriver
-ADD https://chromedriver.storage.googleapis.com/2.43/chromedriver_linux64.zip /opt/chrome/
-RUN cd /opt/chrome/ && \
-    unzip chromedriver_linux64.zip
+RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
+  && curl -sS -o /tmp/chromedriver_linux64.zip http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip \
+  && unzip /tmp/chromedriver_linux64.zip \
+  && mv chromedriver /usr/local/bin/
  
 ENV PATH /go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/chrome
 
@@ -35,5 +36,7 @@ WORKDIR /go/src/work
 # ホストのファイルをコンテナの作業ディレクトリに移行
 ADD . /go/src/work
 #agoutiをインストール
-RUN go get github.com/sclevine/agouti
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
 
