@@ -5,7 +5,7 @@
 ## 2.1. プログラムをダウンロード
 
 下図のとおり、GitHubから`docker-golang-automatic-reservation-master.zip`をダウンロードします。
-ダウンロードしたらユーザー直下に解答し、配置します
+ダウンロードしたらユーザー直下に解答し、配置します。
 
 ![キャプチャ](https://user-images.githubusercontent.com/66953939/84660963-94fddc00-af54-11ea-90ff-e8fcc0af3e5f.png)
 
@@ -23,7 +23,6 @@ cd C:\Users\docker-golang-automatic-reservation-master
 
 ```sh
 docker-compose build
-#「Successfully built ●●●●●●●●●」が出たら完了！
 ```
 
 ## 2.3. コンテナの起動
