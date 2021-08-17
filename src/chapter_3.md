@@ -4,7 +4,9 @@
 
 ## 3.3. main.goファイルの作成
 
-`docker-golang-automatic-reservation-master`配下に`main.go`ファイルを作成します。
+`docker-golang-automatic-reservation-main`配下に`main.go`ファイルを作成します。
+下図のとおり、VS Codeなどのエディタで開いて編集します。![img-03](images/03.png)![img-04](images/04.png)
+
 作成した`main.go`ファイルを編集し、Hello Worldを出力させます。
 
 ```go
@@ -21,7 +23,7 @@ func main() {
 
 ```bash
 # コンテナの中に入る
-docker exec -it docker-golang-automatic-reservation-master_app_1 bash
+docker exec -it docker-golang-automatic-reservation-main_app_1 bash
 # main.goの実行
 go run main.go
 ```
@@ -32,9 +34,9 @@ go run main.go
 
 ## 3.3. Google Chromeを起動し、スクリーンショットを撮る
 
-`/docker-golang-automatic-reservation-master`配下に`screenshot`フォルダを作成します。
+`docker-golang-automatic-reservation-main`配下に`screenshot`フォルダを作成します。
 
-![キャプチャ](https://user-images.githubusercontent.com/66953939/84674597-1dd14380-af66-11ea-8147-bc97fa0dc019.png)
+![img-05](images/05.png)
 
 
 以下のとおり、`main.go`ファイルの編集を行います。
@@ -95,6 +97,6 @@ go run main.go
 ## 3.5. 実行結果の確認
 
 スクリーンショットが作成されているか確認します。
-`/docker-golang-automatic-reservation-master`配下に作成した`screenshot`フォルダに`Google.png`が作成されていればOKです。
+`/docker-golang-automatic-reservation-main`配下に作成した`screenshot`フォルダに`Google.png`が作成されていればOKです。
 
 ![キャプチャ](https://user-images.githubusercontent.com/66953939/84678989-b1594300-af6b-11ea-808f-6f32a12a66fa.png)
