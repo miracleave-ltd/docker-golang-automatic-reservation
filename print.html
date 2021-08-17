@@ -155,31 +155,35 @@
 <div style="break-before: page; page-break-before: always;"></div><h1 id="2-dockerの準備"><a class="header" href="#2-dockerの準備">2. Dockerの準備</a></h1>
 <!-- toc -->
 <h2 id="21-プログラムをダウンロード"><a class="header" href="#21-プログラムをダウンロード">2.1. プログラムをダウンロード</a></h2>
-<p>下図のとおり、GitHubから<code>docker-golang-automatic-reservation-master.zip</code>をダウンロードします。
-ダウンロードしたらユーザー直下に解答し、配置します。</p>
-<p><img src="https://user-images.githubusercontent.com/66953939/84660963-94fddc00-af54-11ea-90ff-e8fcc0af3e5f.png" alt="キャプチャ" /></p>
-<p><img src="https://user-images.githubusercontent.com/66953939/84664878-23289100-af5a-11ea-9818-8b3dd7beb8ca.png" alt="キャプチャ" /></p>
+<p><a href="https://github.com/miracleave-ltd/docker-golang-automatic-reservation">こちら</a>から<code>docker-golang-automatic-reservation-main</code>をZIPでダウンロードします。</p>
+<p>下図のボタンからダウンロード可能です。
+<img src="images/02.png" alt="img-01" /></p>
+<p>ここでは<code>C:\Users\{Your usename}\Projects</code>にダウンロードしたZIPファイルを解凍しています。
+<strong>※後述の動作確認の時に影響があるため。管理者権限が必要なディレクトリには解凍しないようにしましょう。</strong>
+<img src="images/01.png" alt="img-02" /></p>
 <h2 id="22-dockerイメージのビルド"><a class="header" href="#22-dockerイメージのビルド">2.2. Dockerイメージのビルド</a></h2>
-<p>コマンドプロンプトで解凍した<code>docker-golang-automatic-reservation-master</code>まで移動します。</p>
-<pre><code class="language-sh">cd C:\Users\docker-golang-automatic-reservation-master
+<p>コマンドプロンプトで解凍した<code>docker-golang-automatic-reservation-main</code>まで移動します。</p>
+<pre><code class="language-sh">cd C:\Users\{Your usename}\docker-golang-automatic-reservation-main
 </code></pre>
 <p>移動したら以下を実行します。</p>
 <pre><code class="language-sh">docker-compose build
+# 完了するまでそこそこ時間がかかります…
 </code></pre>
 <h2 id="23-コンテナの起動"><a class="header" href="#23-コンテナの起動">2.3. コンテナの起動</a></h2>
-<p>ディレクトリはそのままで以下コマンドを実行します。</p>
+<p>前項が完了したら、ディレクトリはそのままで以下コマンドを実行します。</p>
 <pre><code class="language-sh">docker-compose up -d
 </code></pre>
 <p>更に以下のコマンドを実行しコンテナが正常に起動しているか確認します。</p>
 <pre><code class="language-sh">docker ps
-# Creating docker-golang-automatic-reservation-master_app_1 ... done
-# ↑のように「docker-golang-automatic-reservation-master_app_1」のコンテナがupしていればOK！
+# Creating docker-golang-automatic-reservation-main_app_1 ... done
+# ↑のように「docker-golang-automatic-reservation-main_app_1」のコンテナがupしていればOK！
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="3-goのプログラム作成"><a class="header" href="#3-goのプログラム作成">3. Goのプログラム作成</a></h1>
 <!-- toc -->
 <h2 id="33-maingoファイルの作成"><a class="header" href="#33-maingoファイルの作成">3.3. main.goファイルの作成</a></h2>
-<p><code>docker-golang-automatic-reservation-master</code>配下に<code>main.go</code>ファイルを作成します。
-作成した<code>main.go</code>ファイルを編集し、Hello Worldを出力させます。</p>
+<p><code>docker-golang-automatic-reservation-main</code>配下に<code>main.go</code>ファイルを作成します。
+下図のとおり、VS Codeなどのエディタで開いて編集します。<img src="images/03.png" alt="img-03" /><img src="images/04.png" alt="img-04" /></p>
+<p>作成した<code>main.go</code>ファイルを編集し、Hello Worldを出力させます。</p>
 <pre><code class="language-go">package main
 
 import &quot;fmt&quot;
@@ -190,15 +194,15 @@ func main() {
 </code></pre>
 <h2 id="32-コンテナに接続しgoを実行"><a class="header" href="#32-コンテナに接続しgoを実行">3.2. コンテナに接続し、Goを実行</a></h2>
 <pre><code class="language-bash"># コンテナの中に入る
-docker exec -it docker-golang-automatic-reservation-master_app_1 bash
+docker exec -it docker-golang-automatic-reservation-main_app_1 bash
 # main.goの実行
 go run main.go
 </code></pre>
 <p>下図のように「Hello World」が出力されていれば成功。
 <img src="https://user-images.githubusercontent.com/66953939/84671123-f11b2d00-af61-11ea-8f95-3050b48159de.png" alt="キャプチャ" /></p>
 <h2 id="33-google-chromeを起動しスクリーンショットを撮る"><a class="header" href="#33-google-chromeを起動しスクリーンショットを撮る">3.3. Google Chromeを起動し、スクリーンショットを撮る</a></h2>
-<p><code>/docker-golang-automatic-reservation-master</code>配下に<code>screenshot</code>フォルダを作成します。</p>
-<p><img src="https://user-images.githubusercontent.com/66953939/84674597-1dd14380-af66-11ea-8147-bc97fa0dc019.png" alt="キャプチャ" /></p>
+<p><code>docker-golang-automatic-reservation-main</code>配下に<code>screenshot</code>フォルダを作成します。</p>
+<p><img src="images/05.png" alt="img-05" /></p>
 <p>以下のとおり、<code>main.go</code>ファイルの編集を行います。</p>
 <pre><code class="language-go">// main.go
 package main
@@ -248,7 +252,7 @@ func main() {
 <p><code>./main.go:9:11: invalid UTF-8 encoding</code></p>
 <h2 id="35-実行結果の確認"><a class="header" href="#35-実行結果の確認">3.5. 実行結果の確認</a></h2>
 <p>スクリーンショットが作成されているか確認します。
-<code>/docker-golang-automatic-reservation-master</code>配下に作成した<code>screenshot</code>フォルダに<code>Google.png</code>が作成されていればOKです。</p>
+<code>/docker-golang-automatic-reservation-main</code>配下に作成した<code>screenshot</code>フォルダに<code>Google.png</code>が作成されていればOKです。</p>
 <p><img src="https://user-images.githubusercontent.com/66953939/84678989-b1594300-af6b-11ea-808f-6f32a12a66fa.png" alt="キャプチャ" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="1-anaのページで予約を自動化していく"><a class="header" href="#1-anaのページで予約を自動化していく">1. ANAのページで予約を自動化していく</a></h1>
 <h2 id="41-maingoファイルを編集しanaのページで予約出来るようコードを修正"><a class="header" href="#41-maingoファイルを編集しanaのページで予約出来るようコードを修正">4.1. <code>main.go</code>ファイルを編集し、ANAのページで予約出来るようコードを修正</a></h2>
