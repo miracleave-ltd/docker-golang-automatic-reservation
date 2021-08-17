@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Dockerの準備</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Goのプログラム作成</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> ANAのページで予約を自動化していく</a></li><li class="chapter-item expanded "><a href="code.html"><strong aria-hidden="true">5.</strong> ex. プログラム全量</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Dockerの準備</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Goのプログラム作成</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> ANAの予約ページを自動化してみる</a></li><li class="chapter-item expanded "><a href="code.html"><strong aria-hidden="true">5.</strong> ex. プログラム全量</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -254,7 +254,7 @@ func main() {
 <p>スクリーンショットが作成されているか確認します。
 <code>/docker-golang-automatic-reservation-main</code>配下に作成した<code>screenshot</code>フォルダに<code>Google.png</code>が作成されていればOKです。</p>
 <p><img src="https://user-images.githubusercontent.com/66953939/84678989-b1594300-af6b-11ea-808f-6f32a12a66fa.png" alt="キャプチャ" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="1-anaのページで予約を自動化していく"><a class="header" href="#1-anaのページで予約を自動化していく">1. ANAのページで予約を自動化していく</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="4-anaの予約ページを自動化してみる"><a class="header" href="#4-anaの予約ページを自動化してみる">4. ANAの予約ページを自動化してみる</a></h1>
 <h2 id="41-maingoファイルを編集しanaのページで予約出来るようコードを修正"><a class="header" href="#41-maingoファイルを編集しanaのページで予約出来るようコードを修正">4.1. <code>main.go</code>ファイルを編集し、ANAのページで予約出来るようコードを修正</a></h2>
 <p>前頁で編集したプログラムに以下コードを追加します。</p>
 <pre><code class="language-go">// 自動操作
@@ -345,8 +345,9 @@ page.FirstByName(&quot;telNo&quot;).Fill(&quot;123-456-7890&quot;)
 <p>コンテナで以下を実行します。</p>
 <pre><code class="language-go">go run main.go
 </code></pre>
-<p><code>screenshot</code>フォルダ内に<code>ana-11.png</code>までのキャプチャが撮れていることを確認します。<br>
-ここまで出来たら完成です。お疲れ様でした。</p>
+<p><code>screenshot</code>フォルダ内に<code>ana-11.png</code>までのキャプチャが撮れていることを確認します。
+ここまで出来たら完成です。
+厳密に組む場合はもっと<code>if</code>と<code>err</code>は駆使することになると思いますが、どちらかというと<code>Selenuim</code>の側面が強い感じとなりました。お疲れ様でした。</p>
 <h2 id="47-付録"><a class="header" href="#47-付録">4.7. 付録</a></h2>
 <p>完成したコードはの全量は<a href="./code.html">こちら</a>になります。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ex-プログラム全量"><a class="header" href="#ex-プログラム全量">ex. プログラム全量</a></h1>
