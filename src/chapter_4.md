@@ -5,17 +5,17 @@
 前頁で編集したプログラムに以下コードを追加します。
 
 ```go
-// 自動操作
-//ANA日本語ページ遷移
-page.Navigate("https://www.ana.co.jp/ja/jp")
-log.Printf(page.Title())
+    // 自動操作
+    //ANA日本語ページ遷移
+    page.Navigate("https://www.ana.co.jp/ja/jp")
+    log.Printf(page.Title())
     page.Screenshot("screenshot/ana-top.png")
-//検索ボタン押下
-page.FirstByName("arrivalAirport").Submit()
-page.Screenshot("screenshot/ana-1.png")
-//区間検索「片道」押下
-page.FindByID("hoge1").Click()
-page.Screenshot("screenshot/ana-2.png")
+    //検索ボタン押下
+    page.FirstByName("arrivalAirport").Submit()
+    page.Screenshot("screenshot/ana-1.png")
+    //区間検索「片道」押下
+    page.FindByID("hoge1").Click()
+    page.Screenshot("screenshot/ana-2.png")
 ```
 
 ## 4.2. FindByIDのhoge1を書き換える
@@ -37,30 +37,30 @@ page.FindByID("buttonOneWay").Click()
 続けて以下コードを追加します。
 
 ```go
-//到着地「札幌」選択
-page.FindByID("arrivalAirport").Select("札幌(千歳)")
-page.Screenshot("screenshot/ana-3.png")
-//カレンダーテキスト押下
-page.FindByID("outwardEmbarkationDate").Click()
-page.Screenshot("screenshot/ana-4.png")
-//カレンダーでXpathを指定して8月10日を指定
-page.FirstByXPath("hoge2").Click()
-page.Screenshot("screenshot/ana-5.png")
-//最安値指定
-page.FirstByLabel("最安運賃を検索").Click()
-page.Screenshot("screenshot/ana-6.png")
-//検索ボタン押下
-page.FirstByXPath("/html/body/div[4]/div/div[1]/form/div[2]/div[4]/p/input").Click()
-page.Screenshot("screenshot/ana-7.png")
-//値段を押下
-page.FirstByLabel("hoge3").Click()
-page.Screenshot("screenshot/ana-8.png")
-//確認ボタン押下
-page.FindByButton("確認画面へ").Click()
-page.Screenshot("screenshot/ana-9.png")
-//一般の方押下
-page.FindByButton("一般の方").Click()
-page.Screenshot("screenshot/ana-10.png")
+    //到着地「札幌」選択
+    page.FindByID("arrivalAirport").Select("札幌(千歳)")
+    page.Screenshot("screenshot/ana-3.png")
+    //カレンダーテキスト押下
+    page.FindByID("outwardEmbarkationDate").Click()
+    page.Screenshot("screenshot/ana-4.png")
+    //カレンダーでXpathを指定して9月10日を指定
+    page.FirstByXPath("hoge2").Click()
+    page.Screenshot("screenshot/ana-5.png")
+    //最安値指定
+    page.FirstByLabel("最安運賃を検索").Click()
+    page.Screenshot("screenshot/ana-6.png")
+    //検索ボタン押下
+    page.FindByButton("検索する").Click()
+    page.Screenshot("screenshot/ana-7.png")
+    //値段を押下
+    page.FirstByLabel("hoge3").Click()
+    page.Screenshot("screenshot/ana-8.png")
+    //確認ボタン押下
+    page.FindByButton("確認画面へ").Click()
+    page.Screenshot("screenshot/ana-9.png")
+    //一般の方押下
+    page.FindByButton("一般の方").Click()
+    page.Screenshot("screenshot/ana-10.png")
 ```
 
 ## 4.3. FirstByXPathのhoge2を書き換える
@@ -77,7 +77,7 @@ page.FirstByXPath("/html/body/div[9]/div/div/div/div/div[3]/table/tbody/tr[3]/td
 
 ## 4.4. FirstByLabelのhoge3を書き換える
 
-値段のラベルを取得し"hoge3"を書き換えます。<br>**※上記ページ内で出発地、到着地、搭乗日を選択し検索すると表示されます。** 
+値段のラベルを取得し `hoge3` を書き換えます。<br>**※上記ページ内で出発地、到着地、搭乗日を選択し検索すると表示されます。** 
 
 ![a](https://user-images.githubusercontent.com/66953939/84686408-d8694200-af76-11ea-8e3b-551d611ba86d.png)
 
@@ -92,15 +92,15 @@ page.FirstByLabel("23,960円").Click()
 `hoge3`を書き換えたら以下を追加します。
 
 ```go
-//お客様情報入力
-page.FirstByXPath("/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input").Fill("ソラノ")
-page.FirstByXPath("/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input").Fill("タロウ")
-page.FirstByXPath("/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input").Fill("25")
-page.FirstByLabel("男性").Click()
-page.FirstByName("hoge4").Fill()
-page.FirstByName("assistMailAddress").Fill("test@test.test.test")
-page.FirstByName("assistConfirmMailAddress").Fill("test@test.test.test")
-page.Screenshot("screenshot/ana-11.png")
+    //お客様情報入力
+    page.FirstByXPath("/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input").Fill("ソラノ")
+    page.FirstByXPath("/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input").Fill("タロウ")
+    page.FirstByXPath("/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input").Fill("25")
+    page.FirstByLabel("男性").Click()
+    page.FirstByName("hoge4").Fill()
+    page.FirstByName("assistMailAddress").Fill("test@test.test.test")
+    page.FirstByName("assistConfirmMailAddress").Fill("test@test.test.test")
+    page.Screenshot("screenshot/ana-11.png")
 ```
 
 ## 4.5. FirstByNameのhoge4を書き換える
@@ -130,5 +130,3 @@ go run main.go
 ## 4.7. 付録
 
 完成したコードはの全量は[こちら](./code.md)になります。
-
-

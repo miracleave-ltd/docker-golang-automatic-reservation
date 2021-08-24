@@ -7,10 +7,13 @@
 [こちら](https://github.com/miracleave-ltd/docker-golang-automatic-reservation)から`docker-golang-automatic-reservation-main`をZIPでダウンロードします。
 
 下図のボタンからダウンロード可能です。
+
 ![img-01](images/02.png)
 
-ここでは`C:\Users\{Your usename}\Projects`にダウンロードしたZIPファイルを解凍しています。
-**※後述の動作確認の時に影響があるため。管理者権限が必要なディレクトリには解凍しないようにしましょう。**
+ここでは`C:\meetup`にダウンロードしたZIPファイルを解凍しています。
+
+**※後述の動作確認の時に影響があるため、管理者権限が必要なディレクトリには解凍しないようにしましょう。**
+
 ![img-02](images/01.png)
 
 ## 2.2. Dockerイメージのビルド
@@ -18,7 +21,7 @@
 コマンドプロンプトで解凍した`docker-golang-automatic-reservation-main`まで移動します。
 
 ```sh
-cd C:\Users\{Your usename}\docker-golang-automatic-reservation-main
+cd C:\meetup\docker-golang-automatic-reservation-main
 ```
 
 移動したら以下を実行します。

@@ -2,12 +2,19 @@
 
 <!-- toc -->
 
-## 3.3. main.goファイルの作成
+## 3.1. main.goファイルの作成
 
-`docker-golang-automatic-reservation-main`配下に`main.go`ファイルを作成します。
-下図のとおり、VS Codeなどのエディタで開いて編集します。![img-03](images/03.png)![img-04](images/04.png)
+まずは Go が正しく実行できていることを確認するためにメッセージを出力するところまで確認します。
 
-作成した`main.go`ファイルを編集し、Hello Worldを出力させます。
+![キャプチャ](https://user-images.githubusercontent.com/66953939/84671123-f11b2d00-af61-11ea-8f95-3050b48159de.png)
+
+
+`docker-golang-automatic-reservation-main`配下にある`main.go`ファイルを編集します。
+下図のとおり、VS Codeなどのエディタで開いてHello Worldを出力させるよう編集します。
+
+![img-04](images/04.png)
+
+以下の内容を追加して保存します。
 
 ```go
 package main
@@ -81,6 +88,13 @@ func main() {
 	}
 	// Get screen shot
 	page.Screenshot("screenshot/Google.png")
+
+
+	// ここに 4.1 のコードを追加します。
+
+	// ここに 4.2 のコードを追加します。
+
+	// ここに 4.4 のコードを追加します。
 }
 ```
 
