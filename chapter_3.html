@@ -146,10 +146,13 @@
                     <main>
                         <h1 id="3-goのプログラム作成"><a class="header" href="#3-goのプログラム作成">3. Goのプログラム作成</a></h1>
 <!-- toc -->
-<h2 id="33-maingoファイルの作成"><a class="header" href="#33-maingoファイルの作成">3.3. main.goファイルの作成</a></h2>
-<p><code>docker-golang-automatic-reservation-main</code>配下に<code>main.go</code>ファイルを作成します。
-下図のとおり、VS Codeなどのエディタで開いて編集します。<img src="images/03.png" alt="img-03" /><img src="images/04.png" alt="img-04" /></p>
-<p>作成した<code>main.go</code>ファイルを編集し、Hello Worldを出力させます。</p>
+<h2 id="31-maingoファイルの作成"><a class="header" href="#31-maingoファイルの作成">3.1. main.goファイルの作成</a></h2>
+<p>まずは Go が正しく実行できていることを確認するためにメッセージを出力するところまで確認します。</p>
+<p><img src="https://user-images.githubusercontent.com/66953939/84671123-f11b2d00-af61-11ea-8f95-3050b48159de.png" alt="キャプチャ" /></p>
+<p><code>docker-golang-automatic-reservation-main</code>配下にある<code>main.go</code>ファイルを編集します。
+下図のとおり、VS Codeなどのエディタで開いてHello Worldを出力させるよう編集します。</p>
+<p><img src="images/04.png" alt="img-04" /></p>
+<p>以下の内容を追加して保存します。</p>
 <pre><code class="language-go">package main
 
 import &quot;fmt&quot;
@@ -209,6 +212,13 @@ func main() {
 	}
 	// Get screen shot
 	page.Screenshot(&quot;screenshot/Google.png&quot;)
+
+
+	// ここに 4.1 のコードを追加します。
+
+	// ここに 4.2 のコードを追加します。
+
+	// ここに 4.4 のコードを追加します。
 }
 </code></pre>
 <h2 id="34-再度コンテナに接続しgoを実行"><a class="header" href="#34-再度コンテナに接続しgoを実行">3.4. 再度コンテナに接続し、Goを実行</a></h2>

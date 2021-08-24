@@ -147,17 +147,17 @@
                         <h1 id="4-anaの予約ページを自動化してみる"><a class="header" href="#4-anaの予約ページを自動化してみる">4. ANAの予約ページを自動化してみる</a></h1>
 <h2 id="41-maingoファイルを編集しanaのページで予約出来るようコードを修正"><a class="header" href="#41-maingoファイルを編集しanaのページで予約出来るようコードを修正">4.1. <code>main.go</code>ファイルを編集し、ANAのページで予約出来るようコードを修正</a></h2>
 <p>前頁で編集したプログラムに以下コードを追加します。</p>
-<pre><code class="language-go">// 自動操作
-//ANA日本語ページ遷移
-page.Navigate(&quot;https://www.ana.co.jp/ja/jp&quot;)
-log.Printf(page.Title())
+<pre><code class="language-go">    // 自動操作
+    //ANA日本語ページ遷移
+    page.Navigate(&quot;https://www.ana.co.jp/ja/jp&quot;)
+    log.Printf(page.Title())
     page.Screenshot(&quot;screenshot/ana-top.png&quot;)
-//検索ボタン押下
-page.FirstByName(&quot;arrivalAirport&quot;).Submit()
-page.Screenshot(&quot;screenshot/ana-1.png&quot;)
-//区間検索「片道」押下
-page.FindByID(&quot;hoge1&quot;).Click()
-page.Screenshot(&quot;screenshot/ana-2.png&quot;)
+    //検索ボタン押下
+    page.FirstByName(&quot;arrivalAirport&quot;).Submit()
+    page.Screenshot(&quot;screenshot/ana-1.png&quot;)
+    //区間検索「片道」押下
+    page.FindByID(&quot;hoge1&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-2.png&quot;)
 </code></pre>
 <h2 id="42-findbyidのhoge1を書き換える"><a class="header" href="#42-findbyidのhoge1を書き換える">4.2. FindByIDのhoge1を書き換える</a></h2>
 <p>実際の要素IDを取得し、前項の<code>page.FindByID(&quot;hoge1&quot;).Click()</code>を書き換えます。</p>
@@ -172,30 +172,30 @@ page.Screenshot(&quot;screenshot/ana-2.png&quot;)
 page.FindByID(&quot;buttonOneWay&quot;).Click()
 </code></pre>
 <p>続けて以下コードを追加します。</p>
-<pre><code class="language-go">//到着地「札幌」選択
-page.FindByID(&quot;arrivalAirport&quot;).Select(&quot;札幌(千歳)&quot;)
-page.Screenshot(&quot;screenshot/ana-3.png&quot;)
-//カレンダーテキスト押下
-page.FindByID(&quot;outwardEmbarkationDate&quot;).Click()
-page.Screenshot(&quot;screenshot/ana-4.png&quot;)
-//カレンダーでXpathを指定して8月10日を指定
-page.FirstByXPath(&quot;hoge2&quot;).Click()
-page.Screenshot(&quot;screenshot/ana-5.png&quot;)
-//最安値指定
-page.FirstByLabel(&quot;最安運賃を検索&quot;).Click()
-page.Screenshot(&quot;screenshot/ana-6.png&quot;)
-//検索ボタン押下
-page.FirstByXPath(&quot;/html/body/div[4]/div/div[1]/form/div[2]/div[4]/p/input&quot;).Click()
-page.Screenshot(&quot;screenshot/ana-7.png&quot;)
-//値段を押下
-page.FirstByLabel(&quot;hoge3&quot;).Click()
-page.Screenshot(&quot;screenshot/ana-8.png&quot;)
-//確認ボタン押下
-page.FindByButton(&quot;確認画面へ&quot;).Click()
-page.Screenshot(&quot;screenshot/ana-9.png&quot;)
-//一般の方押下
-page.FindByButton(&quot;一般の方&quot;).Click()
-page.Screenshot(&quot;screenshot/ana-10.png&quot;)
+<pre><code class="language-go">    //到着地「札幌」選択
+    page.FindByID(&quot;arrivalAirport&quot;).Select(&quot;札幌(千歳)&quot;)
+    page.Screenshot(&quot;screenshot/ana-3.png&quot;)
+    //カレンダーテキスト押下
+    page.FindByID(&quot;outwardEmbarkationDate&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-4.png&quot;)
+    //カレンダーでXpathを指定して9月10日を指定
+    page.FirstByXPath(&quot;hoge2&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-5.png&quot;)
+    //最安値指定
+    page.FirstByLabel(&quot;最安運賃を検索&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-6.png&quot;)
+    //検索ボタン押下
+    page.FindByButton(&quot;検索する&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-7.png&quot;)
+    //値段を押下
+    page.FirstByLabel(&quot;hoge3&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-8.png&quot;)
+    //確認ボタン押下
+    page.FindByButton(&quot;確認画面へ&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-9.png&quot;)
+    //一般の方押下
+    page.FindByButton(&quot;一般の方&quot;).Click()
+    page.Screenshot(&quot;screenshot/ana-10.png&quot;)
 </code></pre>
 <h2 id="43-firstbyxpathのhoge2を書き換える"><a class="header" href="#43-firstbyxpathのhoge2を書き換える">4.3. FirstByXPathのhoge2を書き換える</a></h2>
 <p>前項と同ページにて<strong>往路搭乗日</strong>内のカレンダーをクリック、カレンダーが表示された状態で検証ツールを使い、搭乗日の<code>Xpath</code>を特定します。<br>※下図の①→②→③の順番で取得します。
@@ -206,7 +206,7 @@ page.Screenshot(&quot;screenshot/ana-10.png&quot;)
 page.FirstByXPath(&quot;/html/body/div[9]/div/div/div/div/div[3]/table/tbody/tr[3]/td[2]/a&quot;).Click()
 </code></pre>
 <h2 id="44-firstbylabelのhoge3を書き換える"><a class="header" href="#44-firstbylabelのhoge3を書き換える">4.4. FirstByLabelのhoge3を書き換える</a></h2>
-<p>値段のラベルを取得し”hoge3”を書き換えます。<br><strong>※上記ページ内で出発地、到着地、搭乗日を選択し検索すると表示されます。</strong> </p>
+<p>値段のラベルを取得し <code>hoge3</code> を書き換えます。<br><strong>※上記ページ内で出発地、到着地、搭乗日を選択し検索すると表示されます。</strong> </p>
 <p><img src="https://user-images.githubusercontent.com/66953939/84686408-d8694200-af76-11ea-8e3b-551d611ba86d.png" alt="a" /></p>
 <p>下記の通り、<code>hoge3</code>部分を書き換えます。</p>
 <pre><code class="language-go">page.FirstByLabel(&quot;hoge3&quot;).Click()
@@ -214,15 +214,15 @@ page.FirstByXPath(&quot;/html/body/div[9]/div/div/div/div/div[3]/table/tbody/tr[
 page.FirstByLabel(&quot;23,960円&quot;).Click()
 </code></pre>
 <p><code>hoge3</code>を書き換えたら以下を追加します。</p>
-<pre><code class="language-go">//お客様情報入力
-page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input&quot;).Fill(&quot;ソラノ&quot;)
-page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input&quot;).Fill(&quot;タロウ&quot;)
-page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input&quot;).Fill(&quot;25&quot;)
-page.FirstByLabel(&quot;男性&quot;).Click()
-page.FirstByName(&quot;hoge4&quot;).Fill()
-page.FirstByName(&quot;assistMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
-page.FirstByName(&quot;assistConfirmMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
-page.Screenshot(&quot;screenshot/ana-11.png&quot;)
+<pre><code class="language-go">    //お客様情報入力
+    page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[2]/input&quot;).Fill(&quot;ソラノ&quot;)
+    page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[3]/input&quot;).Fill(&quot;タロウ&quot;)
+    page.FirstByXPath(&quot;/html/body/div[3]/div/div[1]/form/div[1]/table/tbody/tr/td[4]/input&quot;).Fill(&quot;25&quot;)
+    page.FirstByLabel(&quot;男性&quot;).Click()
+    page.FirstByName(&quot;hoge4&quot;).Fill()
+    page.FirstByName(&quot;assistMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
+    page.FirstByName(&quot;assistConfirmMailAddress&quot;).Fill(&quot;test@test.test.test&quot;)
+    page.Screenshot(&quot;screenshot/ana-11.png&quot;)
 </code></pre>
 <h2 id="45-firstbynameのhoge4を書き換える"><a class="header" href="#45-firstbynameのhoge4を書き換える">4.5. FirstByNameのhoge4を書き換える</a></h2>
 <p>電話番号のName属性を取得し、<code>hoge4</code>を書き換えます。</p>
