@@ -10,18 +10,27 @@
 
 ![img-01](images/02.png)
 
-ここでは`C:\meetup`にダウンロードしたZIPファイルを解凍しています。
-
-**※後述の動作確認の時に影響があるため、管理者権限が必要なディレクトリには解凍しないようにしましょう。**
+**※後述の動作確認の時に影響があるため、管理者権限が必要なディレクトリには解凍しないようにしましょう。（下図はWindowsの場合の解凍先例）**
 
 ![img-02](images/01.png)
+
+* Windowsの方
+
+`C:\meetup`にダウンロードしたZIPファイルを解凍しています。
+
+* Macの方
+
+`/Users/{your name}/meetup`にダウンロードしたZIPファイルを解凍しています。
 
 ## 2.2. Dockerイメージのビルド
 
 コマンドプロンプトで解凍した`docker-golang-automatic-reservation-main`まで移動します。
 
 ```sh
+# Windowsの場合
 cd C:\meetup\docker-golang-automatic-reservation-main
+# Macの場合
+cd ~/meetup/docker-golang-automatic-reservation-main/
 ```
 
 移動したら以下を実行します。
